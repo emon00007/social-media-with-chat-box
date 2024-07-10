@@ -41,7 +41,7 @@ const Navbar = () => {
           </div>
           <ul className=" grid grid-cols-2">
             <li className="btn btn-ghost text-xl">See Book</li>
-            <li className="btn btn-ghost text-xl">
+            <li >
               <label className="input input-bordered flex items-center gap-2">
                 <input type="text" className="grow" placeholder="Search" />
                 </label>
@@ -49,12 +49,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal gap-5 px-1">
             {links}
           </ul>
         </div>
         <div className="navbar-end">
-          <ul className="flex items-center">
+          <ul className="flex items-center gap-3">
             <li><RiLayoutGrid2Fill /></li>
             <li><RiChat1Fill2 /></li>
             <li><IoNotifications /></li>
