@@ -1,11 +1,12 @@
 import { HiUserGroup } from "react-icons/hi";
+import { MdGroupAdd, MdOutlineOndemandVideo } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const links = <>
     <li><NavLink to='/'>Home</NavLink></li>
-    <li><NavLink to='/aboutUs'>Abouts</NavLink></li>
-    <li><NavLink to='/contacts'>Contacts Us</NavLink></li>
+    <li><NavLink to='/aboutUs'><MdGroupAdd /></NavLink></li>
+    <li><NavLink to='/contacts'><MdOutlineOndemandVideo /></NavLink></li>
 
     <li><NavLink to='/allDataShow'><HiUserGroup /></NavLink></li>
 
