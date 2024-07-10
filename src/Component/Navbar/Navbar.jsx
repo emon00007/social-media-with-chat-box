@@ -1,3 +1,4 @@
+import { HiUserGroup } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -5,9 +6,8 @@ const Navbar = () => {
     <li><NavLink to='/'>Home</NavLink></li>
     <li><NavLink to='/aboutUs'>Abouts</NavLink></li>
     <li><NavLink to='/contacts'>Contacts Us</NavLink></li>
-    <li><NavLink to='/addturest'>AddTourists Spot</NavLink></li>
-    <li><NavLink to='/myList'>My List</NavLink></li>
-    <li><NavLink to='/allDataShow'>All Tourist Spot </NavLink></li>
+
+    <li><NavLink to='/allDataShow'><HiUserGroup /></NavLink></li>
 
 
   </>
