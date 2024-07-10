@@ -5,7 +5,7 @@ import HomeRight from "./HomeRight";
 const Home = () => {
     return (
         <div className="flex ">
-            <div className="col-span-1 bg-black lg:block lg:w-3/12 md:hidden hidden ">
+            <div className="col-span-1 bg-black lg:block lg:w-3/12  md:hidden hidden ">
                 <HomeRight>
                 </HomeRight>
             </div>

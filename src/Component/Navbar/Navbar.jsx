@@ -1,5 +1,7 @@
 import { HiUserGroup } from "react-icons/hi";
+import { IoNotifications } from "react-icons/io5";
 import { MdGroupAdd, MdHome, MdOutlineOndemandVideo } from "react-icons/md";
+import { RiChat1Fill2, RiLayoutGrid2Fill } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -37,7 +39,14 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">See Book</a>
+          <ul className=" grid grid-cols-2">
+            <li className="btn btn-ghost text-xl">See Book</li>
+            <li className="btn btn-ghost text-xl">
+              <label className="input input-bordered flex items-center gap-2">
+                <input type="text" className="grow" placeholder="Search" />
+                </label>
+            </li>
+          </ul>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -45,7 +54,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <ul className="flex items-center">
+            <li><RiLayoutGrid2Fill /></li>
+            <li><RiChat1Fill2 /></li>
+            <li><IoNotifications /></li>
+            <li className="btn">Button</li>
+          </ul>
         </div>
       </div>
     </div>
