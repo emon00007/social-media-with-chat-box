@@ -9,7 +9,7 @@ const Home = () => {
                 <HomeRight>
                 </HomeRight>
             </div>
-            <div className="col-span-2 w-full lg:flex-1 bg-gray-500">
+            <div className="col-span-2 w-full lg:flex-1">
                 <HomeMedile>
 
                 </HomeMedile>
