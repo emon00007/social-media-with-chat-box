@@ -1,7 +1,10 @@
 const HomeMedile = () => {
     return (
         <div>
-            hiii
+        <div>
+            <img src="" alt="" />
+            <input type="text" />
+        </div>
         </div>
     );
 };
