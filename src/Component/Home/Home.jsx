@@ -1,5 +1,5 @@
 import HomeLeft from "./HomeLeft";
-import HomeMedile from "./HomeMedile";
+import HomeMedile from "./HomeMedile/HomeMedile";
 import HomeRight from "./HomeRight";
 
 const Home = () => {

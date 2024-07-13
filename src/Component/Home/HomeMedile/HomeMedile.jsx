@@ -1,4 +1,5 @@
 import { FaImages } from "react-icons/fa";
+import HomePost from "./HomePost";
 
 const HomeMedile = () => {
     return (
@@ -29,6 +30,7 @@ const HomeMedile = () => {
                     <p>Feeling/Activity</p>
                 </div>
             </div>
+            <HomePost></HomePost>
         </div>
     );
 };
