@@ -30,7 +30,8 @@ const HomeMedile = () => {
                     <p>Feeling/Activity</p>
                 </div>
             </div>
-            <HomePost></HomePost>
+            <div className="mx-auto"><HomePost></HomePost></div>
+            
         </div>
     );
 };
