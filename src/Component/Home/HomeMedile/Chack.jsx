@@ -1,19 +1,19 @@
-
 import { FaImages, FaUserTag } from "react-icons/fa";
 import HomePost from "./HomePost";
 import { useRef, useState } from "react";
 import { MdOutlineEmojiEmotions, MdOutlineLocationOn, MdOutlinePublic } from "react-icons/md";
-import { IoMdAddCircleOutline } from "react-icons/io";
+import { IoIosAddCircleOutline, } from "react-icons/io";
 import axios from "axios";
 
 const image_hosting_Key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_Key}`;
+
 const HomeMedile = () => {
     const imageRef = useRef(null);
     const textRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
     const [preview, setPreview] = useState(null);
-const [imageUrl,setImageUrl]=useState('')
+    const [imageUrl, setImageUrl] = useState('');
 console.log(imageUrl);
     const handleImagePost = () => {
         imageRef.current.click();
@@ -38,25 +38,29 @@ console.log(imageUrl);
         const files = event.dataTransfer.files;
         if (files && files[0]) {
             handleFile(files[0]);
+            handleImageUpload(files[0]);
         }
     };
 
     const handleFile = (file) => {
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            setPreview(reader.result);
-        };
-        reader.readAsDataURL(file);
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setPreview(reader.result);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            alert('Please select an image file.');
+        }
     };
 
     const handleFileInputChange = (event) => {
         const file = event.target.files[0];
         if (file) {
             handleFile(file);
-            handleImageUpload(file)
+            handleImageUpload(file);
         }
     };
-
 
     const handleImageUpload = async (file) => {
         const formData = new FormData();
@@ -85,7 +89,7 @@ console.log(imageUrl);
                 </div>
 
                 <div onClick={handleTextPost} className="w-full">
-                    <label htmlFor="my_modal_8" ref={textRef} className="btn hidden">open modal</label>
+                    <label htmlFor="my_modal_8" ref={textRef} className="btn hidden">Open Modal</label>
                     <input
                         type="text"
                         placeholder="Type here"
@@ -109,8 +113,7 @@ console.log(imageUrl);
             <div className="mx-auto">
                 <HomePost />
             </div>
-            {/* modal text and image */}
-            <form >
+            <form>
                 <input type="checkbox" id="my_modal_8" className="modal-toggle" />
                 <div className="modal" role="dialog">
                     <div className="modal-box">
@@ -131,44 +134,43 @@ console.log(imageUrl);
                             className="w-full focus:outline-none focus:border-none mt-2 input"
                             placeholder="What's on your mind, "
                             type="text"
-                            name="caption"
                         />
-                        {/* Drag and Drop Section */}
-                        {/* File Preview */}
                         {preview ? (
-                            <div className={` my-4 text-center rounded-md border ${isDragging ? 'border-green-400 bg-green-100' : 'border-gray-300'}`}
-                            onDragOver={handleDragOver}
-                            onDragLeave={handleDragLeave}
-                            onDrop={handleDrop}
-                        >
+                            <div
+                                className={`my-4 text-center rounded-md border ${isDragging ? 'border-green-400 bg-green-100' : 'border-gray-300'}`}
+                                onDragOver={handleDragOver}
+                                onDragLeave={handleDragLeave}
+                                onDrop={handleDrop}
+                                onClick={handleImagePost}
+                            >
                                 <img
                                     src={preview}
                                     alt="Preview"
-                                    className="max-w-full h-auto rounded-md"
+                                    className="w-full max-h-full h-auto rounded-md"
                                 />
                             </div>
-                        ):(
+                        ) : (
                             <div
-                            className={`p-20 my-4 text-center rounded-md border ${isDragging ? 'border-green-400 bg-green-100' : 'border-gray-300'}`}
-                            onDragOver={handleDragOver}
-                            onDragLeave={handleDragLeave}
-                            onDrop={handleDrop}
-                            onClick={handleImagePost}
-                        >
-                            <div className="text-lg">
-                                <p className="flex justify-center text-4xl"><IoMdAddCircleOutline /></p>
-                                <h3>Add Your photos / video</h3>
-                                <p>or drag and drop</p>
+                                className={`p-20 my-4 text-center rounded-md border ${isDragging ? 'border-green-400 bg-green-100' : 'border-gray-300'}`}
+                                onDragOver={handleDragOver}
+                                onDragLeave={handleDragLeave}
+                                onDrop={handleDrop}
+                                onClick={handleImagePost}
+                            >
+                                <div className=" text-center">
+                                    <p className=" text-4xl flex justify-center "><IoIosAddCircleOutline /></p>
+                                    <h3 className="text-xl font-semibold">Add Your photos / video</h3>
+                                    <p>or drag and drop</p>
+                                </div>
+                                <input
+                                    className="hidden"
+                                    type="file"
+                                    ref={imageRef}
+                                    name="imageFile"
+                                    onChange={handleFileInputChange}
+                                />
                             </div>
-                            <input
-                                className="hidden"
-                                type="file"
-                                ref={imageRef}
-                                onChange={handleFileInputChange}
-                            />
-                        </div>
                         )}
-                        {/* Add to your post */}
                         <div className="flex justify-between items-center border rounded-md">
                             <div>
                                 <p className="p-3">Add to your post</p>
@@ -183,7 +185,7 @@ console.log(imageUrl);
                                 <p className="btn bg-transparent border-none shadow-none"><MdOutlineLocationOn /></p>
                             </div>
                         </div>
-                        <button className="btn bg-white hover:border-green-50 w-full mt-5">next</button>
+                        <button className="btn bg-white hover:border-green-50 w-full mt-5">Next</button>
                     </div>
                     <label className="modal-backdrop" htmlFor="my_modal_8">Close</label>
                 </div>
