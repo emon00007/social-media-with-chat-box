@@ -13,6 +13,11 @@ const SignIn = () => {
         const email = from.email.value;
         const password = from.password.value;
         console.log(email,password);
+        signIn(email ,password)
+        .then(result =>{
+            const user =result.user;
+            console.log(user)
+        })
 
       }
     return (
