@@ -13,8 +13,8 @@ const HomeMedile = () => {
     const textRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
     const [preview, setPreview] = useState(null);
-const [imageUrl,setImageUrl]=useState('')
-console.log(imageUrl);
+    const [imageUrl, setImageUrl] = useState('')
+    console.log(imageUrl);
     const handleImagePost = () => {
         imageRef.current.click();
     };
@@ -137,36 +137,36 @@ console.log(imageUrl);
                         {/* File Preview */}
                         {preview ? (
                             <div className={` my-4 text-center rounded-md border ${isDragging ? 'border-green-400 bg-green-100' : 'border-gray-300'}`}
-                            onDragOver={handleDragOver}
-                            onDragLeave={handleDragLeave}
-                            onDrop={handleDrop}
-                        >
+                                onDragOver={handleDragOver}
+                                onDragLeave={handleDragLeave}
+                                onDrop={handleDrop}
+                            >
                                 <img
                                     src={preview}
                                     alt="Preview"
                                     className="max-w-full h-auto rounded-md"
                                 />
                             </div>
-                        ):(
+                        ) : (
                             <div
-                            className={`p-20 my-4 text-center rounded-md border ${isDragging ? 'border-green-400 bg-green-100' : 'border-gray-300'}`}
-                            onDragOver={handleDragOver}
-                            onDragLeave={handleDragLeave}
-                            onDrop={handleDrop}
-                            onClick={handleImagePost}
-                        >
-                            <div className="text-lg">
-                                <p className="flex justify-center text-4xl"><IoMdAddCircleOutline /></p>
-                                <h3>Add Your photos / video</h3>
-                                <p>or drag and drop</p>
+                                className={`p-20 my-4 text-center rounded-md border ${isDragging ? 'border-green-400 bg-green-100' : 'border-gray-300'}`}
+                                onDragOver={handleDragOver}
+                                onDragLeave={handleDragLeave}
+                                onDrop={handleDrop}
+                                onClick={handleImagePost}
+                            >
+                                <div className="text-lg">
+                                    <p className="flex justify-center text-4xl"><IoMdAddCircleOutline /></p>
+                                    <h3>Add Your photos / video</h3>
+                                    <p>or drag and drop</p>
+                                </div>
+                                <input
+                                    className="hidden"
+                                    type="file"
+                                    ref={imageRef}
+                                    onChange={handleFileInputChange}
+                                />
                             </div>
-                            <input
-                                className="hidden"
-                                type="file"
-                                ref={imageRef}
-                                onChange={handleFileInputChange}
-                            />
-                        </div>
                         )}
                         {/* Add to your post */}
                         <div className="flex justify-between items-center border rounded-md">
