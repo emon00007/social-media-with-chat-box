@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Ragister = () => {
     const [showPassword, setShowpassword] = useState(false);
     const [registerError, setRegisterError] = useState("");
+    const {createUser}=useContext(AuthContext)
+    const handCreateUser = e=>{
+        e.preventDefault()
+    }
     return (
         <div>
             <Helmet><title>Regestration</title></Helmet>
@@ -15,7 +20,7 @@ const Ragister = () => {
         <div className="hero ">
 
           <div className="card shrink-0  lg:w-1/3 mx-auto  shadow-2xl bg-base-100">
-            <form  className="card-body">
+            <form onSubmit={handCreateUser} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
