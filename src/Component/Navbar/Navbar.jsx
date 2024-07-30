@@ -2,7 +2,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { IoNotifications } from "react-icons/io5";
 import { MdGroupAdd, MdHome, MdOutlineOndemandVideo } from "react-icons/md";
 import { RiChat1Fill2, RiLayoutGrid2Fill } from "react-icons/ri";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const links = <>
@@ -58,7 +58,7 @@ const Navbar = () => {
             <li><RiLayoutGrid2Fill /></li>
             <li><RiChat1Fill2 /></li>
             <li><IoNotifications /></li>
-            <li className="btn">Button</li>
+            <Link className="btn" to='/signIn'>Sign In</Link>
           </ul>
         </div>
       </div>
