@@ -1,10 +1,23 @@
+import { useContext } from "react";
 import { HiUserGroup } from "react-icons/hi";
 import { IoNotifications } from "react-icons/io5";
 import { MdGroupAdd, MdHome, MdOutlineOndemandVideo } from "react-icons/md";
 import { RiChat1Fill2, RiLayoutGrid2Fill } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext)
+  const handleSignOut = () => {
+    logOut()
+      .then(result => {
+        console.log("Sign out successful:", result);
+      })
+      .catch(error => {
+        console.error("Sign out error:", error);
+        // Add a user-friendly error message or notification here
+      });
+  };
   const links = <>
     <li><NavLink to='/'><MdHome /></NavLink></li>
     <li><NavLink to='/FriendRequest'><MdGroupAdd /></NavLink></li>
@@ -44,7 +57,7 @@ const Navbar = () => {
             <li >
               <label className="input input-bordered flex items-center gap-2">
                 <input type="text" className="grow" placeholder="Search" />
-                </label>
+              </label>
             </li>
           </ul>
         </div>
@@ -58,7 +71,10 @@ const Navbar = () => {
             <li><RiLayoutGrid2Fill /></li>
             <li><RiChat1Fill2 /></li>
             <li><IoNotifications /></li>
-            <Link className="btn" to='/signIn'>Sign In</Link>
+           {
+              user ?
+                <Link to='/signIn' onClick={handleSignOut} className="btn">Sign Out</Link> : <Link to='/signIn' className="btn">Log in</Link>
+            }
           </ul>
         </div>
       </div>

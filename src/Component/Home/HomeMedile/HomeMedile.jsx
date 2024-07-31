@@ -75,6 +75,10 @@ const HomeMedile = () => {
         }
     };
 
+    const handleAllPost =() =>{
+
+    }
+
     return (
         <div className="bg-slate-50 py-2 shadow-2xl m-4 rounded-xl">
             <div className="flex items-center gap-3 px-8 m-4">
@@ -183,7 +187,7 @@ const HomeMedile = () => {
                                 <p className="btn bg-transparent border-none shadow-none"><MdOutlineLocationOn /></p>
                             </div>
                         </div>
-                        <button className="btn bg-white hover:border-green-50 w-full mt-5">next</button>
+                        <button onSubmit={handleAllPost} className="btn  bg-white hover:border-green-50 w-full mt-5">next</button>
                     </div>
                     <label className="modal-backdrop" htmlFor="my_modal_8">Close</label>
                 </div>
