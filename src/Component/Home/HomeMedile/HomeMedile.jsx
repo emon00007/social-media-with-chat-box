@@ -1,4 +1,3 @@
-
 import { FaImages, FaUserTag } from "react-icons/fa";
 import HomePost from "./HomePost";
 import { useRef, useState } from "react";
@@ -8,13 +7,14 @@ import axios from "axios";
 
 const image_hosting_Key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_Key}`;
+
 const HomeMedile = () => {
     const imageRef = useRef(null);
     const textRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
     const [preview, setPreview] = useState(null);
-    const [imageUrl, setImageUrl] = useState('')
-    console.log(imageUrl);
+    const [imageUrl, setImageUrl] = useState('');
+
     const handleImagePost = () => {
         imageRef.current.click();
     };
@@ -38,6 +38,7 @@ const HomeMedile = () => {
         const files = event.dataTransfer.files;
         if (files && files[0]) {
             handleFile(files[0]);
+            handleImageUpload(files[0]);
         }
     };
 
@@ -53,10 +54,9 @@ const HomeMedile = () => {
         const file = event.target.files[0];
         if (file) {
             handleFile(file);
-            handleImageUpload(file)
+            handleImageUpload(file);
         }
     };
-
 
     const handleImageUpload = async (file) => {
         const formData = new FormData();
@@ -64,20 +64,31 @@ const HomeMedile = () => {
 
         try {
             const res = await axios.post(image_hosting_api, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                headers: { 'Content-Type': 'multipart/form-data' }
             });
             setImageUrl(res.data.data.url);
-            console.log(res.data.data.url);
         } catch (error) {
             console.error('Error uploading image:', error);
         }
     };
 
-    const handleAllPost =() =>{
-
-    }
+        const handleAllPost = async (e) => {
+        e.preventDefault();
+        console.log('object');
+        const form = e.target;
+        const texte = form.text.value;
+        const post = {
+            Caption: texte,
+            image: imageUrl // Ensure imageUrl is defined somewhere in your code
+        };
+    
+        try {
+            const response = await axios.post('http://localhost:5000/PostCollection', post);
+            console.log(response.data);
+        } catch (error) {
+            console.error('There was an error!', error);
+        }
+    };
 
     return (
         <div className="bg-slate-50 py-2 shadow-2xl m-4 rounded-xl">
@@ -113,9 +124,9 @@ const HomeMedile = () => {
             <div className="mx-auto">
                 <HomePost />
             </div>
-            {/* modal text and image */}
-            <form >
-                <input type="checkbox" id="my_modal_8" className="modal-toggle" />
+            {/* Modal Text and Image */}
+            <form onSubmit={handleAllPost} >
+                <input name="text" type="checkbox" id="my_modal_8" className="modal-toggle" />
                 <div className="modal" role="dialog">
                     <div className="modal-box">
                         <h3 className="text-xl text-center font-bold mb-2">Create Post</h3>
@@ -140,7 +151,7 @@ const HomeMedile = () => {
                         {/* Drag and Drop Section */}
                         {/* File Preview */}
                         {preview ? (
-                            <div className={` my-4 text-center rounded-md border ${isDragging ? 'border-green-400 bg-green-100' : 'border-gray-300'}`}
+                            <div className={`my-4 text-center rounded-md border ${isDragging ? 'border-green-400 bg-green-100' : 'border-gray-300'}`}
                                 onDragOver={handleDragOver}
                                 onDragLeave={handleDragLeave}
                                 onDrop={handleDrop}
@@ -187,7 +198,7 @@ const HomeMedile = () => {
                                 <p className="btn bg-transparent border-none shadow-none"><MdOutlineLocationOn /></p>
                             </div>
                         </div>
-                        <button onSubmit={handleAllPost} className="btn  bg-white hover:border-green-50 w-full mt-5">next</button>
+                        <button className="btn bg-white hover:border-green-50 w-full mt-5">Next</button>
                     </div>
                     <label className="modal-backdrop" htmlFor="my_modal_8">Close</label>
                 </div>
