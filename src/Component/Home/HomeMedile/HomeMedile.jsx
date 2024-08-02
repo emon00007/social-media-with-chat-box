@@ -134,7 +134,7 @@ const HomeMedile = () => {
                         <div className="flex gap-3">
                             <div className="avatar">
                                 <div className="w-14 mt-2 rounded-full">
-                                    <img src="https://i.ibb.co/n6KhZBD/french-bulldogs.jpg" alt="avatar" />
+                                    <img src=" " alt="avatar" />
                                 </div>
                             </div>
                             <div className="mt-2">
