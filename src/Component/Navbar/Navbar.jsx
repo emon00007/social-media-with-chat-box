@@ -6,6 +6,7 @@ import { RiChat1Fill2, RiLayoutGrid2Fill } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
   const handleSignOut = () => {
