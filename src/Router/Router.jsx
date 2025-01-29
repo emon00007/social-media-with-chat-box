@@ -6,6 +6,7 @@ import Home from "../Component/Home/Home";
 import SignIn from "../Component/SignIn/SignIn";
 import Ragister from "../Component/Ragister/Ragister";
 import FriendRequest from "../Component/FriendRequest/FriendRequest";
+import Chat from "../Component/ChatSection/Chat";
 
   export const router = createBrowserRouter([
     {
@@ -26,6 +27,9 @@ import FriendRequest from "../Component/FriendRequest/FriendRequest";
         {
           path:'/FriendRequest',
           element:<FriendRequest></FriendRequest>
+        },{
+          path:'/Chat',
+          element:<Chat></Chat>
         }
       ]
     },

@@ -5,6 +5,7 @@ import { MdGroupAdd, MdHome, MdOutlineOndemandVideo } from "react-icons/md";
 import { RiChat1Fill2, RiLayoutGrid2Fill } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Chat from "../ChatSection/Chat";
 
 
 const Navbar = () => {
@@ -70,7 +71,7 @@ const Navbar = () => {
         <div className="navbar-end">
           <ul className="flex items-center gap-3">
             <li><RiLayoutGrid2Fill /></li>
-            <li><RiChat1Fill2 /></li>
+            <Link to='/Chat'><RiChat1Fill2 ><Chat></Chat></RiChat1Fill2></Link>
             <li><IoNotifications /></li>
            {
               user ?

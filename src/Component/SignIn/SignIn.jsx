@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet";
-import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
@@ -20,6 +19,7 @@ const SignIn = () => {
         })
 
       }
+
     return (
         <div>
               <Helmet><title>Login</title></Helmet>
@@ -60,9 +60,6 @@ const SignIn = () => {
 
             </form>
 
-            <div className="p-5 ">
-              <button className="btn w-full  btn-ghost border border-black " ><FaGoogle className="text-2xl"></FaGoogle>LogIn with Google </button>
-            </div>
             <div className="text-center py-5"><p>Do not Have an Account <Link className="text-blue-600" to="/register">Regester</Link></p></div>
           </div>
         </div>
